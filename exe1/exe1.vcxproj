@@ -146,6 +146,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="exe1.cpp" />
+    <ClCompile Include="Leitor_de_dados.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModeloClassico.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Leitor_de_dados.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModeloClassico.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="exe1.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
