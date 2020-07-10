@@ -6,6 +6,7 @@
 
 #include "Leitor_de_dados.h"
 #include <ilcplex/ilocplex.h>
+typedef IloArray<IloNumVarArray> NumVarMatrix;
 
 class Model
 {

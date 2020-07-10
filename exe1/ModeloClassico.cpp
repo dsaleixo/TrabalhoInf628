@@ -1,5 +1,5 @@
 #include "ModeloClassico.h"
-typedef IloArray<IloNumVarArray> NumVarMatrix;
+
 
 
 ModeloClassico::ModeloClassico(string s) :Model(s) {
@@ -39,13 +39,6 @@ ModeloClassico::ModeloClassico(string s) :Model(s) {
 
 
 
-    for (IloInt i = 0; i < this->dados.n; i++) { // todo local tem q ser atendido
-        IloExpr sum(this->env);
-        sum = IloSum(x[i]);
-        this->constraints.add(sum == 1);
-        sum.end();
-    }
-
     for (IloInt i = 0; i < this->dados.n; i++) { 
         for (IloInt j = 0; j < this->dados.n; j++) {
             this->constraints.add(x[i][j] - y[j] <= 0);
@@ -60,7 +53,7 @@ ModeloClassico::ModeloClassico(string s) :Model(s) {
     }
 
 
-    for (IloInt i = 0; i < this->dados.n; i++) { // todo local tem q ser atendido
+    for (IloInt i = 0; i < this->dados.n; i++) { // lance do raio
         IloExpr sum(env);
         sum = IloScalProd(this->dados.D[i], x[i]);
         this->constraints.add(sum - r <= 0);

@@ -19,6 +19,7 @@ class Leitor_de_Dados{
 		void Ler(IloEnv env,string s);
 		Leitor_de_Dados();
 		void floyd();
+		IloNumArray calcula_D(IloEnv env);
 
 		//variavaeis 
 		IloInt n; //numero de locais

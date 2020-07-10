@@ -1,5 +1,6 @@
 #include "Leitor_de_dados.h"
-
+#include <set>
+#include <iterator>
 
 Leitor_de_Dados::Leitor_de_Dados() {
 
@@ -58,3 +59,25 @@ void Leitor_de_Dados::floyd() {
     }
 }
 
+IloNumArray Leitor_de_Dados::calcula_D(IloEnv env) {
+    set <float, less <float> > s1;
+
+    for (int i = 0; i < this->n; i++) {
+        for (int j = 0; j < this->n; j++) {
+            s1.insert(this->D[i][j]);
+        }
+    }
+
+    IloNumArray v(env,s1.size());
+
+    set <float, less <float> > ::iterator itr;
+    int i = 0;
+    for (itr = s1.begin(); itr != s1.end(); ++itr)
+    {
+        v[i] =*itr;
+        i++;
+    }
+
+
+    return v;
+}

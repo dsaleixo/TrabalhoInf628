@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include "ModeloClassico.h"
-
+#include "ModeloElloumi.h"
+#include "ModeloCalikTansel.h"
 
 
 
@@ -15,7 +16,7 @@ int main()
 {
    // Leitor_de_Dados dados(env, "dados\\teste.txt");
 
-	Model *m = new ModeloClassico("dados\\pmed.txt");
+	Model *m = new ModeloCalikTansel("dados\\pmed.txt");
 	m->resolve();
 	m->imprime_solucao();
 	return 0;

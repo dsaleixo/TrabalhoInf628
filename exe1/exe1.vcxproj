@@ -148,12 +148,16 @@
     <ClCompile Include="exe1.cpp" />
     <ClCompile Include="Leitor_de_dados.cpp" />
     <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModeloCalikTansel.cpp" />
     <ClCompile Include="ModeloClassico.cpp" />
+    <ClCompile Include="ModeloElloumi.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Leitor_de_dados.h" />
     <ClInclude Include="Model.h" />
+    <ClInclude Include="ModeloCalikTansel.h" />
     <ClInclude Include="ModeloClassico.h" />
+    <ClInclude Include="ModeloElloumi.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
