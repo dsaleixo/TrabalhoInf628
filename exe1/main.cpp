@@ -5,6 +5,7 @@
 #include "ModeloClassico.h"
 #include "ModeloElloumi.h"
 #include "ModeloCalikTansel.h"
+#include "ModeloCP2.h"
 
 
 
@@ -16,7 +17,10 @@ int main()
 {
    // Leitor_de_Dados dados(env, "dados\\teste.txt");
 
-	Model *m = new ModeloCalikTansel("dados\\pmed.txt");
+	Model *m = new ModeloCP2("dados\\pmed.txt");
+	//Model* m = new ModeloClassico("dados\\pmed.txt");
+	//Model* m = new ModeloElloumi("dados\\pmed.txt");
+	//Model* m = new ModeloCalikTansel("dados\\pmed.txt");
 	m->resolve();
 	m->imprime_solucao();
 	return 0;
