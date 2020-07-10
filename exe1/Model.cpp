@@ -11,11 +11,11 @@ Model::Model(string s,int p) {
 }
 
 void Model::resolve() {
-	this->cplex1.setOut(env.getNullStream());
+	
 	this->cplex1=IloCplex(this->env); //Declara-se objeto da classe IloCplex
 	this->cplex1.extract(this->model);//Extrai o modelo a ser resolvido. Copia os dados do modelo em
 						  //estruturas de dados eficientes a serem utilizados pelo CPLEX.
-	
+	this->cplex1.setOut(env.getNullStream());
 	this->cplex1.solve(); //resolve o modelo
 }
 
