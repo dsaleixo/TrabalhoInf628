@@ -10,7 +10,7 @@ class ModeloClassico :
     public Model
 {
     public:
-        ModeloClassico(string s);
+        ModeloClassico(string s,int p);
 
 };
 

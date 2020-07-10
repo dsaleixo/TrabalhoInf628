@@ -11,9 +11,9 @@ typedef IloArray<IloNumVarArray> NumVarMatrix;
 class Model
 {
 	public:
-		Model(string s);
+		Model(string s,int p);
 		void resolve();
-		void imprime_solucao();
+		double imprime_solucao();
 
 		Leitor_de_Dados dados;
 		IloEnv env; ///Cria o ambiente: env

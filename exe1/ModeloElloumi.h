@@ -10,7 +10,7 @@ class ModeloElloumi :
     public Model
 {
     public:
-        ModeloElloumi(string s);
+        ModeloElloumi(string s,int p);
      
         
 

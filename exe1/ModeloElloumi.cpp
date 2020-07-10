@@ -3,7 +3,7 @@
 
 
 
-ModeloElloumi::ModeloElloumi(string s) : Model(s) {
+ModeloElloumi::ModeloElloumi(string s,int p) : Model(s,p) {
 
 	IloNumArray D = this->dados.calcula_D(this->env);
 	IloInt Z_size =D.getSize();

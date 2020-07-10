@@ -2,7 +2,7 @@
 
 
 
-ModeloClassico::ModeloClassico(string s) :Model(s) {
+ModeloClassico::ModeloClassico(string s,int p) : Model(s,p) {
 	
     //Definição das VARIAVEIS de DECISAO=======================================
 

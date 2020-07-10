@@ -8,7 +8,7 @@ Leitor_de_Dados::Leitor_de_Dados() {
 
 
 
-void Leitor_de_Dados::Ler(IloEnv env, string s){
+void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
     // LER DADOS
 
@@ -23,7 +23,7 @@ void Leitor_de_Dados::Ler(IloEnv env, string s){
   
 
     in >> this->n >> m >> this->p;
-
+    this->p = p;
     this->D = NumMatrix(env, this->n); // inicialaiza a matrix D
     for (int i = 0; i < this->n; i++) {
         this->D[i] = IloNumArray(env, this->n);

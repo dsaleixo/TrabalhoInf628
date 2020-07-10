@@ -1,7 +1,7 @@
 #include "ModeloCalikTansel.h"
 
 
-ModeloCalikTansel::ModeloCalikTansel(string s) : Model(s){
+ModeloCalikTansel::ModeloCalikTansel(string s,int p) : Model(s,p){
 
 	IloNumArray D = this->dados.calcula_D(this->env);
 	IloInt Z_size = D.getSize();

@@ -12,7 +12,7 @@ class ModeloCalikTansel :
     public Model
 {
     public:
-        ModeloCalikTansel(string s);
+        ModeloCalikTansel(string s, int p);
         NumMatrix3D cria_matrizA(IloNumArray D, int k);
 };
 

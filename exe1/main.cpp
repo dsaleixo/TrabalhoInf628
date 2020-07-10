@@ -9,20 +9,45 @@
 
 
 
+
 using namespace std;
+
+Model* MetodoFabrica(int i,string s, int p) {
+	if (i == 0)return new ModeloClassico(s, p);
+	else if (i == 1)return new ModeloElloumi(s, p);
+	else if (i == 2)return new ModeloCalikTansel(s, p);
+	else if (i == 3) return new ModeloCP2(s, p);
+	return NULL;
+
+}
 
 
 
 int main()
 {
-   // Leitor_de_Dados dados(env, "dados\\teste.txt");
 
-	Model *m = new ModeloCP2("dados\\pmed.txt");
-	//Model* m = new ModeloClassico("dados\\pmed.txt");
-	//Model* m = new ModeloElloumi("dados\\pmed.txt");
-	//Model* m = new ModeloCalikTansel("dados\\pmed.txt");
-	m->resolve();
-	m->imprime_solucao();
+	int numero_p[5] = { 5,10,15,20,30 };
+	ofstream out("saida.txt");
+	
+	
+	for (int i = 1; i < 2; i++) {
+		for (int p = 0; p < 1; p++) {
+			for (int m = 0; m < 4; m++) {
+				cout << i << " " << p << " " << m << endl;
+				Model* model = MetodoFabrica(m, "dados\\pmed"+to_string(i)+".txt", numero_p[p]);
+			
+				long double Tfinal;
+				long double TInicial;
+				TInicial = (clock() / (double)CLOCKS_PER_SEC);
+				model->resolve();
+				Tfinal = (clock() / (double)CLOCKS_PER_SEC) - TInicial;
+				double resultado = model->imprime_solucao();
+				out << i << " " << p << " " << m << " " << resultado << " " << Tfinal<< endl;
+				delete model;
+			}
+		}
+	}
+	out.close();
 	return 0;
 }
 
