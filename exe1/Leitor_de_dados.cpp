@@ -38,6 +38,8 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
     floyd();// algortitmo floyd para completar a tabela
    
+
+
 }
 
 

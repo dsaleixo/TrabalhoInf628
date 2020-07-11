@@ -30,9 +30,9 @@ int main()
 	ofstream out("saida.txt");
 	
 	
-	for (int i = 1; i < 2; i++) {
-		for (int p = 0; p < 1; p++) {
-			for (int m = 0; m < 4; m++) {
+	for (int i = 1; i < 21; i++) {// varia os mapas
+		for (int p = 0; p < 5; p++) { // varias os p
+			for (int m = 0; m < 4; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
 				Model* model = MetodoFabrica(m, "dados\\pmed"+to_string(i)+".txt", numero_p[p]);
 			

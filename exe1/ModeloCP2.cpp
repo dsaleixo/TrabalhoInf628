@@ -39,7 +39,7 @@ ModeloCP2::ModeloCP2(string s,int p) : Model(s,p) {
     this->constraints.add(sum <= this->dados.p);
     sum.end();
    
-
+   
 
     for (IloInt i = 0; i < this->dados.n; i++) {
         for (int k = 0; k < S[i].size(); k++) {
@@ -57,12 +57,16 @@ ModeloCP2::ModeloCP2(string s,int p) : Model(s,p) {
 
     }
 
-
-
+    for (int i = 0; i < Z_size - 1; i++) {// restrição mais importante
+        this->constraints.add(Z[i] - Z[i+1] >= 0);
+     
+    }
     this->model.add(this->constraints);
 
+  
 
 
+   
 }
 
 
@@ -79,7 +83,7 @@ vector<vector<int>> ModeloCP2::coleta_Si(IloNumArray D, int k) {
                 if (this->dados.D[i][j] == D[t]) contK++;
                
              }
-            if (contK != 0 )Si.push_back(t);
+            if (!contK == 0 )Si.push_back(t);
         }
         Si.push_back(k - 1);
        

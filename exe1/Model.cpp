@@ -17,6 +17,11 @@ void Model::resolve() {
 						  //estruturas de dados eficientes a serem utilizados pelo CPLEX.
 	this->cplex1.setOut(env.getNullStream());
 	this->cplex1.solve(); //resolve o modelo
+
+	
+
+
+
 }
 
 
