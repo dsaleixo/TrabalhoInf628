@@ -6,6 +6,7 @@
 #include "ModeloElloumi.h"
 #include "ModeloCalikTansel.h"
 #include "ModeloCP1.h"
+#include "ModeloCP2.h"
 
 
 
@@ -17,6 +18,7 @@ Model* MetodoFabrica(int i,string s, int p) {
 	else if (i == 1)return new ModeloElloumi(s, p);
 	else if (i == 2)return new ModeloCalikTansel(s, p);
 	else if (i == 3) return new ModeloCP1(s, p);
+	else if (i == 4) return new ModeloCP2(s, p);
 	return NULL;
 
 }
@@ -32,7 +34,7 @@ int main()
 	
 	for (int i = 1; i < 21; i++) {// varia os mapas
 		for (int p = 0; p < 5; p++) { // varias os p
-			for (int m = 0; m < 4; m++) {// varia os modelos
+			for (int m = 0; m < 5; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
 				Model* model = MetodoFabrica(m, "dados\\pmed"+to_string(i)+".txt", numero_p[p]);
 			
