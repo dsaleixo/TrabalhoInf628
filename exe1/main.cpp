@@ -5,7 +5,7 @@
 #include "ModeloClassico.h"
 #include "ModeloElloumi.h"
 #include "ModeloCalikTansel.h"
-#include "ModeloCP2.h"
+#include "ModeloCP1.h"
 
 
 
@@ -16,7 +16,7 @@ Model* MetodoFabrica(int i,string s, int p) {
 	if (i == 0)return new ModeloClassico(s, p);
 	else if (i == 1)return new ModeloElloumi(s, p);
 	else if (i == 2)return new ModeloCalikTansel(s, p);
-	else if (i == 3) return new ModeloCP2(s, p);
+	else if (i == 3) return new ModeloCP1(s, p);
 	return NULL;
 
 }
