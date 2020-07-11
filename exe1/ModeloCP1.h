@@ -1,17 +1,17 @@
 #pragma once
 
-#ifndef MODEL_CP2_H
-#define MODEL_CP2_H
+#ifndef MODEL_CP1_H
+#define MODEL_CP1_H
 
 #include "Model.h"
 #include <vector>
 
-class ModeloCP2 :
+class ModeloCP1 :
     public Model
    
 {
     public:
-        ModeloCP2(string s, int p);
+        ModeloCP1(string s, int p);
         vector<vector<int>> coleta_Si(IloNumArray D,int k);
 
 };

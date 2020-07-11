@@ -1,8 +1,8 @@
-#include "ModeloCP2.h"
+#include "ModeloCP1.h"
 
 
 
-ModeloCP2::ModeloCP2(string s,int p) : Model(s,p) {
+ModeloCP1::ModeloCP1(string s,int p) : Model(s,p) {
 
     IloNumArray D = this->dados.calcula_D(this->env);
     IloInt Z_size = D.getSize();
@@ -70,7 +70,7 @@ ModeloCP2::ModeloCP2(string s,int p) : Model(s,p) {
 }
 
 
-vector<vector<int>> ModeloCP2::coleta_Si(IloNumArray D, int k) {
+vector<vector<int>> ModeloCP1::coleta_Si(IloNumArray D, int k) {
 
     vector<vector<int>> S;
     

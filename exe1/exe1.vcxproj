@@ -150,7 +150,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModeloCalikTansel.cpp" />
     <ClCompile Include="ModeloClassico.cpp" />
-    <ClCompile Include="ModeloCP2.cpp" />
+    <ClCompile Include="ModeloCP1.cpp" />
     <ClCompile Include="ModeloElloumi.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +158,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModeloCalikTansel.h" />
     <ClInclude Include="ModeloClassico.h" />
-    <ClInclude Include="ModeloCP2.h" />
+    <ClInclude Include="ModeloCP1.h" />
     <ClInclude Include="ModeloElloumi.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
