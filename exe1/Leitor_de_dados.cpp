@@ -55,7 +55,7 @@ int Leitor_de_Dados::distancia_entre_pontos(Ponto p1, Ponto p2) {
     a *= a;
     int b = (p1.y - p2.y);
     b *= b;
-    return floor(sqrt(a + b));
+    return round(sqrt(a + b));
 }
 
 
