@@ -33,11 +33,11 @@ int main()
 	ofstream out("saida.txt");
 	
 	
-	for (int i = 1; i < 2; i++) {// varia os mapas
+	for (int i = 1; i < 27; i++) {// varia os mapas
 		for (int p = 0; p < 5; p++) { // varias os p
 			for (int m = 4; m < 5; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
-				Model* model = MetodoFabrica(m, "dados\\pmedC"+to_string(i)+".txt", 0);
+				Model* model = MetodoFabrica(m, "dados\\pmedC"+to_string(i)+".txt", numero_p[p]);
 			
 				long double Tfinal;
 				long double TInicial;
