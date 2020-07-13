@@ -1,6 +1,11 @@
 #include "Model.h"
 
-
+Model::~Model() {
+	
+	this->constraints.end();
+	this->cplex1.end();
+	this->env.end();
+}
 
 Model::Model(string s,int p) {
 	
@@ -27,8 +32,12 @@ void Model::resolve() {
 
 double Model::imprime_solucao() {
 
-	//cout << "REsultado: " << this->cplex1.getObjValue() << endl;
-	return this->cplex1.getObjValue();
-
-
+	double resp;
+	try {
+	resp = this->cplex1.getObjValue();
+	}
+	catch (...) {
+		resp = -1;
+	}
+	return resp;
 }

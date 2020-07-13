@@ -6,7 +6,7 @@ ModeloCalikTansel::ModeloCalikTansel(string s,int p) : Model(s,p){
 	IloNumArray D = this->dados.calcula_D(this->env);
 	IloInt Z_size = D.getSize();
 
-	NumMatrix3D A = this->cria_matrizA(D,Z_size);
+	NumMatrix3D A = this->dados.cria_matrizA(env,D,Z_size);
 
 	
 
@@ -70,29 +70,3 @@ ModeloCalikTansel::ModeloCalikTansel(string s,int p) : Model(s,p){
 
 
 
-NumMatrix3D ModeloCalikTansel::cria_matrizA(IloNumArray D,int k) {
-	NumMatrix3D A(this->env, this->dados.n);
-	for (int i = 0; i < this->dados.n; i++) {
-		A[i] = NumMatrix(env, this->dados.n);
-		for (int j = 0; j < this->dados.n; j++) {
-			A[i][j] = IloNumArray(env, k);
-		}
-	}
-
-	for (int i = 0; i < this->dados.n; i++) {
-		for (int j = 0; j < this->dados.n; j++) {
-			for (int t = 0; t < k; t++) {
-				if (this->dados.D[i][j]<=D[t]) {
-					A[i][j][t] = 1; 
-					
-				}
-				else {
-					A[i][j][t] = 0;
-				}
-			}
-		}
-	
-	}
-	return A;
-
-}

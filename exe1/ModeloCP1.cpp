@@ -9,7 +9,7 @@ ModeloCP1::ModeloCP1(string s,int p) : Model(s,p) {
 
    
 
-    vector<vector<int>> S = this->coleta_Si(D, Z_size);
+    vector<vector<int>> S = this->dados.coleta_Si(this->env,D, Z_size);
 
     //Definição das VARIAVEIS de DECISAO=======================================
 
@@ -70,30 +70,3 @@ ModeloCP1::ModeloCP1(string s,int p) : Model(s,p) {
 }
 
 
-vector<vector<int>> ModeloCP1::coleta_Si(IloNumArray D, int k) {
-
-    vector<vector<int>> S;
-    
-    for (int i = 0; i < this->dados.n; i++) {
-        vector<int> Si;
-        for (int t = 0; t < k-1; t++) {
-            int contK = 0;
-            int contK1 = 0;
-            for (int j = 0; j < this->dados.n; j++){
-                if (this->dados.D[i][j] == D[t]) contK++;
-               
-             }
-            if (!contK == 0 )Si.push_back(t);
-        }
-        Si.push_back(k - 1);
-       
-        S.push_back(Si);
-       
-        
-    }
-   
-
-
-    return S;
-
-}

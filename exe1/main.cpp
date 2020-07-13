@@ -7,6 +7,7 @@
 #include "ModeloCalikTansel.h"
 #include "ModeloCP1.h"
 #include "ModeloCP2.h"
+#include "ModeloPmedianasCapacitado.h"
 
 
 
@@ -15,10 +16,10 @@ using namespace std;
 
 Model* MetodoFabrica(int i,string s, int p) {
 	if (i == 0)return new ModeloClassico(s, p);
-	else if (i == 1)return new ModeloElloumi(s, p);
-	else if (i == 2)return new ModeloCalikTansel(s, p);
-	else if (i == 3) return new ModeloCP1(s, p);
-	else if (i == 4) return new ModeloCP2(s, p);
+	else if (i == 1)return new ModeloCalikTansel(s, p);
+	else if (i == 2) return new ModeloCP1(s, p);
+	else if (i == 3) return new ModeloCP2(s, p);
+	else if (i == 4) return new ModeloPmedianasCapacitado(s, p);
 	return NULL;
 
 }
@@ -32,11 +33,11 @@ int main()
 	ofstream out("saida.txt");
 	
 	
-	for (int i = 1; i < 21; i++) {// varia os mapas
+	for (int i = 1; i < 2; i++) {// varia os mapas
 		for (int p = 0; p < 5; p++) { // varias os p
-			for (int m = 0; m < 5; m++) {// varia os modelos
+			for (int m = 4; m < 5; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
-				Model* model = MetodoFabrica(m, "dados\\pmed"+to_string(i)+".txt", numero_p[p]);
+				Model* model = MetodoFabrica(m, "dados\\pmedC"+to_string(i)+".txt", 0);
 			
 				long double Tfinal;
 				long double TInicial;

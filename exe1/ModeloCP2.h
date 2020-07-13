@@ -11,7 +11,7 @@ class ModeloCP2 :
 {
 public:
     ModeloCP2(string s, int p);
-    vector<vector<int>> coleta_Si(IloNumArray D, int k);
+    
 };
 
 #endif

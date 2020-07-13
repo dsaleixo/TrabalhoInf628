@@ -12,6 +12,7 @@ class Model
 {
 	public:
 		Model(string s,int p);
+		~Model();
 		void resolve();
 		double imprime_solucao();
 

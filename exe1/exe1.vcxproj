@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;IL_STD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files\IBM\ILOG\CPLEX_Studio1210\cplex\include;C:\Program Files\IBM\ILOG\CPLEX_Studio1210\concert\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\IBM\ILOG\CPLEX_Studio1210\concert\include;C:\Program Files\IBM\ILOG\CPLEX_Studio1210\cplex\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -153,6 +153,7 @@
     <ClCompile Include="ModeloCP1.cpp" />
     <ClCompile Include="ModeloCP2.cpp" />
     <ClCompile Include="ModeloElloumi.cpp" />
+    <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Leitor_de_dados.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="ModeloCP1.h" />
     <ClInclude Include="ModeloCP2.h" />
     <ClInclude Include="ModeloElloumi.h" />
+    <ClInclude Include="ModeloPmedianasCapacitado.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
