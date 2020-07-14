@@ -153,6 +153,7 @@
     <ClCompile Include="ModeloCP1.cpp" />
     <ClCompile Include="ModeloCP2.cpp" />
     <ClCompile Include="ModeloElloumi.cpp" />
+    <ClCompile Include="ModeloPmedianas.cpp" />
     <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="ModeloCP1.h" />
     <ClInclude Include="ModeloCP2.h" />
     <ClInclude Include="ModeloElloumi.h" />
+    <ClInclude Include="ModeloPmedianas.h" />
     <ClInclude Include="ModeloPmedianasCapacitado.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

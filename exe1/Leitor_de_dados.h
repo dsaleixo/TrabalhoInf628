@@ -28,6 +28,7 @@ class Leitor_de_Dados{
 
 	public:
 		void Ler(IloEnv env,string s,int p);
+		void Ler2(IloEnv env, string s, int p);
 		Leitor_de_Dados();
 		void floyd();
 		void calcula_distancia_entre_locais();

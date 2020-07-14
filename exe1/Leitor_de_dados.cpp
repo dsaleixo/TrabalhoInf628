@@ -21,9 +21,51 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
     
  
+    int m;
+
+    in >> this->n >>m>> this->p ;
+    this->p = p;
+
+   
+
+    this->D = NumMatrix(env, this->n); // inicialaiza a matrix D
+    for (int i = 0; i < this->n; i++) {
+        this->D[i] = IloNumArray(env, this->n);
+    }
+
   
 
-    in >> this->n >> this->p >>this->Q;
+    int a, b, c;
+    for (int i = 0; i < m; i++) { // Le as distancia do arquivo 
+        in >> a >> b >> c;
+        D[a - 1][b - 1] = c;
+        D[b - 1][a - 1] = c;
+    }
+
+    floyd();// algortitmo floyd para completar a tabela
+
+    
+   
+    in.close();
+
+}
+
+
+void Leitor_de_Dados::Ler2(IloEnv env, string s, int p) {
+
+    // LER DADOS
+
+    ifstream in(s);
+    if (!in) {
+        throw "Erro ao abrir o arquivo";
+
+    }
+
+
+
+
+
+    in >> this->n >> this->p >> this->Q;
     this->p = p;
 
     Demanda = IloNumArray(env, this->n);
@@ -33,18 +75,18 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
         this->D[i] = IloNumArray(env, this->n);
     }
 
-    double a,d;
+    double a, d;
 
-    for (int i = 0; i < this->n ; i++) { // Le as distancia do arquivo 
+    for (int i = 0; i < this->n; i++) { // Le as distancia do arquivo 
         Ponto ponto;
-        in >> a >> ponto.x >> ponto.y>> d;
+        in >> a >> ponto.x >> ponto.y >> d;
         this->pontos.push_back(ponto);
         this->Demanda[i] = d;
-        
+
     }
 
     this->calcula_distancia_entre_locais();
-   
+
 
 
 }
