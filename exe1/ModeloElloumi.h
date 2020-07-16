@@ -11,6 +11,10 @@ class ModeloElloumi :
 {
     public:
         ModeloElloumi(string s,int p);
+        IloNumArray D;
+        IloInt Z_size;
+        IloNumVarArray Z;
+        IloNumVarArray y;
      
         
 

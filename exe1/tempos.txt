@@ -1,2 +1,2 @@
 n  p medianas  Classico    CalikTansel  CP1  CP2
-1  5  2.945  19.704
+1  5  0.637  18.014

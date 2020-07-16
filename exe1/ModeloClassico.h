@@ -11,6 +11,9 @@ class ModeloClassico :
 {
     public:
         ModeloClassico(string s,int p);
+        NumVarMatrix x;
+        IloNumVarArray y;
+        IloFloatVar r;
 
 };
 

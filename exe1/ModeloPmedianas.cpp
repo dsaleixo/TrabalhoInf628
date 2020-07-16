@@ -26,7 +26,7 @@ ModeloPmedianas::ModeloPmedianas(string s, int p) : Model(s, p) {
     IloExpr obj(this->env);
     for (IloInt i = 0; i < this->dados.n; i++) {
         for (IloInt j = 0; j < this->dados.n; j++) {
-            obj = obj + this->dados.D[i][j] * x[i][j];
+            obj = obj + this->dados.Dist[i][j] * x[i][j];
         }
     }
 

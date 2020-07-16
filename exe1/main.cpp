@@ -8,6 +8,11 @@
 #include "ModeloCalikTansel.h"
 #include "ModeloCP1.h"
 #include "ModeloCP2.h"
+#include "OMOSP.h"
+#include "OMOERestrito.h"
+#include "MSP.h"
+#include "EpslonRestrito.h"
+#include "EpslonRestritoAproximado.h"
 
 using namespace std;
 
@@ -22,7 +27,7 @@ Model* MetodoFabrica(int i, string s, int p) {
 
 }
 
-int main()
+int teste1()
 {
 
 	cout << "Incio modelos" << endl;
@@ -35,13 +40,13 @@ int main()
 	out << "n" << "  p" << " medianas  Classico    CalikTansel  CP1  CP2" << endl;
 	outt << "n" << "  p" << " medianas  Classico    CalikTansel  CP1  CP2" << endl;
 
-	for (int i = 16; i < 21; i++) {// varia os mapas
+	for (int i = 1; i < 21; i++) {// varia os mapas
 		for (int p = 0; p < 5; p++) { // varias os p
 			outt << i << "  " << numero_p[p];
 			for (int m = 0; m < 5; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
 
-				model = MetodoFabrica(m, "dados/pmed" + to_string(i) + ".txt", numero_p[p]);
+				model = MetodoFabrica(m, "dados/pmed" + to_string(i) , numero_p[p]);
 				//Model* model = MetodoFabrica(m, "pmed"+to_string(i)+".txt", numero_p[p]);
 
 				long double Tfinal;
@@ -65,6 +70,15 @@ int main()
 	cout << "FIM Modelos" << endl;
 	return 0;
 }
+
+
+
+int main() {
+	EpslonRestritoAproximado mmo("dados/pmed1", 5,"resultado/teste3.txt",5);
+	mmo.rodar();
+	return 0;
+}
+
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
 // Depurar programa: F5 ou menu Depurar > Iniciar Depuração

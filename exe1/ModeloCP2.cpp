@@ -4,20 +4,20 @@
 
 ModeloCP2::ModeloCP2(string s, int p) : Model(s, p) {
 
-    IloNumArray D = this->dados.calcula_D(this->env);
-    IloInt Z_size = D.getSize();
+    this->D = this->dados.calcula_D(this->env);
+    this->Z_size = D.getSize();
 
     
 
-    vector<vector<int>> S = this->dados.coleta_Si(this->env,D, Z_size);
+    this->S = this->dados.coleta_Si(this->env,this->D, this->Z_size);
 
     //Definição das VARIAVEIS de DECISAO=======================================
 
-    IloFloatVar r(this->env);
+    r = IloFloatVar(this->env);
 
 
     //Vetor de facilidade y[j], se o centro será alocado em j
-    IloNumVarArray y(this->env, this->dados.n, 0, 1, ILOINT);
+    y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
 
     // Função Objetivo===============================================================
 
@@ -44,7 +44,7 @@ ModeloCP2::ModeloCP2(string s, int p) : Model(s, p) {
 
             
             for (IloInt j = 0; j < this->dados.n; j++) {
-                if (this->dados.D[i][j] < D[S[i][k]]) {
+                if (this->dados.Dist[i][j] < D[S[i][k]]) {
                     sum += y[j];
                 }
             }

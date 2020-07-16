@@ -7,17 +7,17 @@ ModeloClassico::ModeloClassico(string s,int p) : Model(s,p) {
     //Definição das VARIAVEIS de DECISAO=======================================
 
     //Matriz de variaveis x[i][j]: se o local i seja atendido pelo centro j
-    NumVarMatrix x(this->env, this->dados.n); //Cria n linhas para a matriz x
+    this->x = NumVarMatrix(this->env, this->dados.n); //Cria n linhas para a matriz x
     for (int i = 0; i < this->dados.n; i++) {
         //para cada linha, cria-se um array de m variaveis binárias:
         x[i] = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
     }
 
     //Vetor de facilidade y[j], se o centro será alocado em j
-    IloNumVarArray y(this->env, this->dados.n, 0, 1, ILOINT);
+    y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
 
     //Raio R
-    IloFloatVar r(this->env);
+    r = IloFloatVar(this->env);
 
 
     // Função Objetivo===============================================================
@@ -55,7 +55,7 @@ ModeloClassico::ModeloClassico(string s,int p) : Model(s,p) {
 
     for (IloInt i = 0; i < this->dados.n; i++) { // lance do raio
         IloExpr sum(env);
-        sum = IloScalProd(this->dados.D[i], x[i]);
+        sum = IloScalProd(this->dados.Dist[i], x[i]);
         this->constraints.add(sum - r <= 0);
         sum.end();
     }

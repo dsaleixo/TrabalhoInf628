@@ -1,5 +1,16 @@
 #include "Model.h"
 
+bool Model::tem_solucao() {
+	
+	try {
+		 this->cplex1.getObjValue();
+	}
+	catch (...) {
+		return false();
+	}
+	return true;;
+}
+
 Model::~Model() {
 	
 	this->constraints.end();

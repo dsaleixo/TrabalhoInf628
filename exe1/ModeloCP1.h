@@ -12,6 +12,25 @@ class ModeloCP1 :
 {
     public:
         ModeloCP1(string s, int p);
+        IloNumArray D;
+        IloInt Z_size;
+        vector<vector<int>> S;
+        IloNumVarArray Z;
+        IloNumVarArray y;
+
+        IloExpr getFuncaoObjRaio();
+        IloExpr getFuncaoObjCusto();
+
+        void setFuncaoObj(IloExpr obj);
+        void geraRestricoesbase();
+        void addRestricao(IloRange rest);
+        void finalizarestricoes();
+        double getValorRaio();
+        double getValorCusto();
+
+        void reset();
+
+
 
 };
 

@@ -5,18 +5,18 @@
 
 ModeloElloumi::ModeloElloumi(string s,int p) : Model(s,p) {
 
-	IloNumArray D = this->dados.calcula_D(this->env);
-	IloInt Z_size =D.getSize();
+	this->D = this->dados.calcula_D(this->env);
+	this->Z_size =D.getSize();
 
 
     //Definição das VARIAVEIS de DECISAO=======================================
 
    //Matriz de variaveis k[j]
-    IloNumVarArray Z(this->env, Z_size, 0, 1, ILOINT);
+    this->Z =IloNumVarArray(this->env, Z_size, 0, 1, ILOINT);
     
 
     //Vetor de facilidade y[j], se o centro será alocado em j
-    IloNumVarArray y(this->env, this->dados.n, 0, 1, ILOINT);
+    this->y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
 
     // Função Objetivo===============================================================
 
@@ -52,7 +52,7 @@ ModeloElloumi::ModeloElloumi(string s,int p) : Model(s,p) {
             IloExpr sum(this->env);
             sum += Z[k];
             for (IloInt j = 0; j < this->dados.n; j++) {
-                if (this->dados.D[i][j] < D[k]) {
+                if (this->dados.Dist[i][j] < D[k]) {
                     sum += y[j];
                 }
             }

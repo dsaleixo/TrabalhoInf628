@@ -3,19 +3,19 @@
 
 ModeloCalikTansel::ModeloCalikTansel(string s,int p) : Model(s,p){
 
-	IloNumArray D = this->dados.calcula_D(this->env);
-	IloInt Z_size = D.getSize();
+	this->D = this->dados.calcula_D(this->env);
+	this->Z_size = this->D.getSize();
 
-	NumMatrix3D A = this->dados.cria_matrizA(env,D,Z_size);
+	A = this->dados.cria_matrizA(this->env,this->D,this->Z_size);
 
 	
 
 	//Matriz de variaveis k[j]
-	IloNumVarArray Z(this->env, Z_size, 0, 1, ILOINT);
+	Z = IloNumVarArray(this->env, this->Z_size, 0, 1, ILOINT);
 
 
 	//Vetor de facilidade y[j], se o centro será alocado em j
-	IloNumVarArray y(this->env, this->dados.n, 0, 1, ILOINT);
+	y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
 
 	// Função Objetivo===============================================================
 

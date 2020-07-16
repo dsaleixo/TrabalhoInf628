@@ -15,6 +15,7 @@ class Model
 		~Model();
 		void resolve();
 		double imprime_solucao();
+		bool tem_solucao();
 
 		Leitor_de_Dados dados;
 		IloEnv env; ///Cria o ambiente: env

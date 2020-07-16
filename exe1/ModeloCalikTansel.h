@@ -13,6 +13,11 @@ class ModeloCalikTansel :
 {
     public:
         ModeloCalikTansel(string s, int p);
+        IloNumArray D;
+        IloInt Z_size;
+        NumMatrix3D A;
+        IloNumVarArray Z;
+        IloNumVarArray y;
         
 };
 

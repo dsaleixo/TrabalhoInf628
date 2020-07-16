@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -145,8 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EpslonRestrito.cpp" />
-    <ClCompile Include="EpslonRestritoAproximado.cpp" />
+    <ClCompile Include="Epslon.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Leitor_de_dados.cpp" />
     <ClCompile Include="MMO.cpp" />
@@ -159,13 +158,10 @@
     <ClCompile Include="ModeloPmedianas.cpp" />
     <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
     <ClCompile Include="MSP.cpp" />
-    <ClCompile Include="MVPR.cpp" />
     <ClCompile Include="OMOERestrito.cpp" />
     <ClCompile Include="OMOSP.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EpslonRestrito.h" />
-    <ClInclude Include="EpslonRestritoAproximado.h" />
     <ClInclude Include="Leitor_de_dados.h" />
     <ClInclude Include="MMO.h" />
     <ClInclude Include="Model.h" />
@@ -177,7 +173,6 @@
     <ClInclude Include="ModeloPmedianas.h" />
     <ClInclude Include="ModeloPmedianasCapacitado.h" />
     <ClInclude Include="MSP.h" />
-    <ClInclude Include="MVPR.h" />
     <ClInclude Include="OMOERestrito.h" />
     <ClInclude Include="OMOSP.h" />
     <ClInclude Include="resource.h" />

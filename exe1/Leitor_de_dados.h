@@ -43,8 +43,9 @@ class Leitor_de_Dados{
 		//variavaeis 
 		IloInt n; //numero de locais
 		IloInt p; //numero de centro
-		NumMatrix D;
+		NumMatrix Dist;
 		IloInt Q;
+		IloNumArray Custo;
 		vector<Ponto> pontos;
 		IloNumArray Demanda;
 		

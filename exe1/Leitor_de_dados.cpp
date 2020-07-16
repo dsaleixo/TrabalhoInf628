@@ -13,13 +13,11 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
     // LER DADOS
 
-    ifstream in(s);
+    ifstream in(s+".txt");
     if (!in) {
         throw "Erro ao abrir o arquivo";
         
     }
-
-    
  
     int m;
 
@@ -28,9 +26,9 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
    
 
-    this->D = NumMatrix(env, this->n); // inicialaiza a matrix D
+    this->Dist = NumMatrix(env, this->n); // inicialaiza a matrix D
     for (int i = 0; i < this->n; i++) {
-        this->D[i] = IloNumArray(env, this->n);
+        this->Dist[i] = IloNumArray(env, this->n);
     }
 
   
@@ -38,8 +36,8 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
     int a, b, c;
     for (int i = 0; i < m; i++) { // Le as distancia do arquivo 
         in >> a >> b >> c;
-        D[a - 1][b - 1] = c;
-        D[b - 1][a - 1] = c;
+        this->Dist[a - 1][b - 1] = c;
+        this->Dist[b - 1][a - 1] = c;
     }
 
     floyd();// algortitmo floyd para completar a tabela
@@ -48,6 +46,17 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
    
     in.close();
 
+    ifstream in2(s + "Custo.txt");
+    if (!in2) {
+        throw "Erro ao abrir o arquivo";
+
+    }
+
+
+    this->Custo = IloNumArray(env, this->n);
+    for (int i = 0; i < this->n; i++)in2 >> Custo[i];
+
+    in2.close();
 }
 
 
@@ -63,16 +72,14 @@ void Leitor_de_Dados::Ler2(IloEnv env, string s, int p) {
 
 
 
-
-
     in >> this->n >> this->p >> this->Q;
     this->p = p;
 
     Demanda = IloNumArray(env, this->n);
 
-    this->D = NumMatrix(env, this->n); // inicialaiza a matrix D
+    this->Dist = NumMatrix(env, this->n); // inicialaiza a matrix D
     for (int i = 0; i < this->n; i++) {
-        this->D[i] = IloNumArray(env, this->n);
+        this->Dist[i] = IloNumArray(env, this->n);
     }
 
     double a, d;
@@ -106,8 +113,8 @@ void Leitor_de_Dados::calcula_distancia_entre_locais() {
     for (int i = 0; i < this->n;i++) {
         for (int j = i; j < this->n; j++) {
             int aux = distancia_entre_pontos(this->pontos[i], this->pontos[j]);
-            this->D[i][j] = aux;
-            this->D[j][i] = aux;
+            this->Dist[i][j] = aux;
+            this->Dist[j][i] = aux;
             
         }
     }
@@ -121,11 +128,12 @@ void Leitor_de_Dados::floyd() {
     for (k = 0; k < this->n; k++) {
         for (i = 0; i < this->n; i++) {
             for (j = 0; j < this->n; j++) {
-                if ((this->D[i][k] * this->D[k][j] != 0) && (i != j))
+                if ((this->Dist[i][k] * this->Dist[k][j] != 0) && (i != j))
                 {
-                    if ((this->D[i][k] + this->D[k][j] < this->D[i][j]) || (this->D[i][j] == 0))
+                    if ((this->Dist[i][k] + this->Dist[k][j] < this->Dist[i][j]) || 
+                                                                (this->Dist[i][j] == 0))
                     {
-                        this->D[i][j] = this->D[i][k] + this->D[k][j];
+                        this->Dist[i][j] = this->Dist[i][k] + this->Dist[k][j];
                     }
                 }
             }
@@ -138,7 +146,7 @@ IloNumArray Leitor_de_Dados::calcula_D(IloEnv env) {
 
     for (int i = 0; i < this->n; i++) {
         for (int j = 0; j < this->n; j++) {
-            s1.insert(this->D[i][j]);
+            s1.insert(this->Dist[i][j]);
         }
     }
 
@@ -170,7 +178,7 @@ NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env,IloNumArray Dt, int k) {
     for (int i = 0; i < this->n; i++) {
         for (int j = 0; j < this->n; j++) {
             for (int t = 0; t < k; t++) {
-                if (this->D[i][j] <= Dt[t]) {
+                if (this->Dist[i][j] <= Dt[t]) {
                     A[i][j][t] = 1;
 
                 }
@@ -197,7 +205,7 @@ vector<vector<int>> Leitor_de_Dados::coleta_Si(IloEnv env, IloNumArray Dt, int k
             int contK = 0;
             int contK1 = 0;
             for (int j = 0; j < this->n; j++) {
-                if (this->D[i][j] == Dt[t]) contK++;
+                if (this->Dist[i][j] == Dt[t]) contK++;
 
             }
             if (!contK == 0)Si.push_back(t);
