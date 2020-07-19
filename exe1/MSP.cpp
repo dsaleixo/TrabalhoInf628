@@ -60,7 +60,7 @@ void MSP::rodar() {
 
 }
 void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double Beta2) {
-	if (A1 == B1 && B2 == A2)return;
+	if (abs(A1 - B1) < 0.2 && abs(B2 == A2) < 0.2)return;
 	
 
 	double gama = (A2 - B2) / (B1 - A1);

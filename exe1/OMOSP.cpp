@@ -13,7 +13,7 @@ void OMOSP::rodar() {
 		model.geraRestricoesbase();
 		model.finalizarestricoes();
 		model.resolve();
-		this->salva_resultado();
+		if(model.tem_solucao())	this->salva_resultado();
 		model.reset();
 	}
 
@@ -22,7 +22,7 @@ void OMOSP::rodar() {
 	model.geraRestricoesbase();
 	model.finalizarestricoes();
 	model.resolve();
-	this->salva_resultado();
+	if (model.tem_solucao())	this->salva_resultado();
 	model.reset();
 
 }

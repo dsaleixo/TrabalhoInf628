@@ -1,0 +1,54 @@
+i=1		n=100		p=5
+3 pontos dominantes
+13 299
+213 155
+3013 127
+Tempo(s): 77.55
+
+i=1		n=100		p=10
+3 pontos dominantes
+13 299
+213 155
+4592 91
+Tempo(s): 62.152
+
+i=1		n=100		p=15
+3 pontos dominantes
+13 299
+213 155
+7300 79
+Tempo(s): 66.482
+
+i=2		n=100		p=5
+7 pontos dominantes
+14 316
+15 248
+30 215
+51 200
+158 169
+300 145
+1438 128
+Tempo(s): 70.758
+
+i=2		n=100		p=10
+7 pontos dominantes
+14 316
+15 248
+30 215
+51 200
+158 169
+299 145
+5111 98
+Tempo(s): 73.375
+
+i=2		n=100		p=15
+7 pontos dominantes
+14 316
+15 248
+30 215
+51 200
+158 169
+300 145
+7464 83
+Tempo(s): 70.333
+

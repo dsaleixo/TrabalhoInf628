@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BBM.cpp" />
     <ClCompile Include="EpslonRestrito.cpp" />
     <ClCompile Include="EpslonRestritoAproximado.cpp" />
     <ClCompile Include="main.cpp" />
@@ -159,11 +160,13 @@
     <ClCompile Include="ModeloPmedianas.cpp" />
     <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
     <ClCompile Include="MSP.cpp" />
+    <ClCompile Include="MTCH.cpp" />
     <ClCompile Include="MVPR.cpp" />
     <ClCompile Include="OMOERestrito.cpp" />
     <ClCompile Include="OMOSP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BBM.h" />
     <ClInclude Include="EpslonRestrito.h" />
     <ClInclude Include="EpslonRestritoAproximado.h" />
     <ClInclude Include="Leitor_de_dados.h" />
@@ -177,6 +180,7 @@
     <ClInclude Include="ModeloPmedianas.h" />
     <ClInclude Include="ModeloPmedianasCapacitado.h" />
     <ClInclude Include="MSP.h" />
+    <ClInclude Include="MTCH.h" />
     <ClInclude Include="MVPR.h" />
     <ClInclude Include="OMOERestrito.h" />
     <ClInclude Include="OMOSP.h" />
