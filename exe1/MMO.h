@@ -14,6 +14,13 @@ struct Solucao
 };
  
 
+struct Intervalo1
+{
+	double A1, A2, B1, B2, a;
+
+};
+
+bool operator<(const Intervalo1& a, const Intervalo1& b);
 
 class MMO
 {
@@ -27,6 +34,7 @@ class MMO
 		void salva_resultado();
 		void setP(int p);
 		void reset();
+		void deleta_ambiente();
 		~MMO();
 
 

@@ -146,18 +146,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BBM.cpp" />
+    <ClCompile Include="DuasFase.cpp" />
     <ClCompile Include="EpslonRestrito.cpp" />
     <ClCompile Include="EpslonRestritoAproximado.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Leitor_de_dados.cpp" />
     <ClCompile Include="MMO.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModeloCalikTansel.cpp" />
-    <ClCompile Include="ModeloClassico.cpp" />
     <ClCompile Include="ModeloCP1.cpp" />
-    <ClCompile Include="ModeloCP2.cpp" />
-    <ClCompile Include="ModeloElloumi.cpp" />
-    <ClCompile Include="ModeloPmedianas.cpp" />
     <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
     <ClCompile Include="MSP.cpp" />
     <ClCompile Include="MTCH.cpp" />
@@ -167,18 +163,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BBM.h" />
+    <ClInclude Include="DuasFase.h" />
     <ClInclude Include="EpslonRestrito.h" />
     <ClInclude Include="EpslonRestritoAproximado.h" />
     <ClInclude Include="Leitor_de_dados.h" />
     <ClInclude Include="MMO.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModeloCalikTansel.h" />
-    <ClInclude Include="ModeloClassico.h" />
     <ClInclude Include="ModeloCP1.h" />
-    <ClInclude Include="ModeloCP2.h" />
-    <ClInclude Include="ModeloElloumi.h" />
-    <ClInclude Include="ModeloPmedianas.h" />
-    <ClInclude Include="ModeloPmedianasCapacitado.h" />
     <ClInclude Include="MSP.h" />
     <ClInclude Include="MTCH.h" />
     <ClInclude Include="MVPR.h" />

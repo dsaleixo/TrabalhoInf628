@@ -63,13 +63,13 @@ void EpslonRestrito::rodar() {
 }
 void EpslonRestrito::rodar(double A1, double A2, double B1, double B2) {
 
-
+	
 	while (!(abs(A1 - B1) < 0.5 && abs(B2 - A2) < 0.5)) {
 
-		double C1;
+		int C1;
 		model.setFuncaoObj(model.getFuncaoObjCusto());
 		model.geraRestricoesbase();
-		model.addRestricao(model.getFuncaoObjRaio() <= A2-1);
+		model.addRestricao(model.getFuncaoObjRaio() <= A2-0.5);
 		model.finalizarestricoes();
 		model.resolve();
 		if (!model.tem_solucao())return;
@@ -78,7 +78,7 @@ void EpslonRestrito::rodar(double A1, double A2, double B1, double B2) {
 		model.reset();
 
 
-		double C2;
+		int C2;
 		model.setFuncaoObj(model.getFuncaoObjRaio());
 		model.geraRestricoesbase();
 		model.addRestricao(model.getFuncaoObjCusto() <= C1);
@@ -88,7 +88,7 @@ void EpslonRestrito::rodar(double A1, double A2, double B1, double B2) {
 		this->salva_resultado();
 		C2 = model.getValorRaio();
 		model.reset();
-
+		//cout<<"C " << C1 << " " << C2 << endl;
 		A1 = C1;
 		A2 = C2;
 	}

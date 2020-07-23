@@ -32,20 +32,21 @@ class Leitor_de_Dados{
 		Leitor_de_Dados();
 		void floyd();
 		void calcula_distancia_entre_locais();
-		IloNumArray calcula_D(IloEnv env);// nome confuso, este metodo não calculas as distancias
-		NumMatrix3D cria_matrizA(IloEnv env, IloNumArray Dt, int k);
-		vector<vector<int>> coleta_Si(IloEnv env, IloNumArray Dt, int k);
+		vector<int> calcula_D();// nome confuso, este metodo não calculas as distancias
+		NumMatrix3D cria_matrizA(IloEnv env, IloIntArray Dt, int k);
+		vector<vector<int>> coleta_Si(IloEnv env, vector<int> Dt, int k);
 		int distancia_entre_pontos(Ponto p1, Ponto p2);
+		~Leitor_de_Dados();
 
 
 
 
 		//variavaeis 
-		IloInt n; //numero de locais
-		IloInt p; //numero de centro
-		NumMatrix Dist;
+		int n; //numero de locais
+		int p; //numero de centro
+		int **Dist;
 		IloInt Q;
-		IloNumArray Custo;
+		vector<int> Custo;
 		vector<Ponto> pontos;
 		IloNumArray Demanda;
 		

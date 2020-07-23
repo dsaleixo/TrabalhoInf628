@@ -7,7 +7,12 @@ Leitor_de_Dados::Leitor_de_Dados() {
 
 }
 
+Leitor_de_Dados::~Leitor_de_Dados() {
+    for (int i = 0; i < n; i++)
+        delete[] Dist[i];
 
+    delete[] Dist;
+}
 
 void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
@@ -26,9 +31,10 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
    
 
-    this->Dist = NumMatrix(env, this->n); // inicialaiza a matrix D
+    this->Dist = new int*[this->n]; // inicialaiza a matrix D
     for (int i = 0; i < this->n; i++) {
-        this->Dist[i] = IloNumArray(env, this->n);
+        this->Dist[i] = new int[this->n];
+        for (int j = 0; j < this->n; j++)this->Dist[i][j] = 0;
     }
 
   
@@ -52,9 +58,12 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
 
     }
 
-
-    this->Custo = IloNumArray(env, this->n);
-    for (int i = 0; i < this->n; i++)in2 >> Custo[i];
+    int aux;
+    for (int i = 0; i < this->n; i++) {
+        in2 >> aux;
+        Custo.push_back(aux);
+    }
+    
 
     in2.close();
 }
@@ -76,12 +85,12 @@ void Leitor_de_Dados::Ler2(IloEnv env, string s, int p) {
     this->p = p;
 
     Demanda = IloNumArray(env, this->n);
-
+    /*
     this->Dist = NumMatrix(env, this->n); // inicialaiza a matrix D
     for (int i = 0; i < this->n; i++) {
         this->Dist[i] = IloNumArray(env, this->n);
     }
-
+    */
     double a, d;
 
     for (int i = 0; i < this->n; i++) { // Le as distancia do arquivo 
@@ -141,8 +150,8 @@ void Leitor_de_Dados::floyd() {
     }
 }
 
-IloNumArray Leitor_de_Dados::calcula_D(IloEnv env) {
-    set <float, less <float> > s1;
+vector<int> Leitor_de_Dados::calcula_D() {
+    set <int, less <int> > s1;
 
     for (int i = 0; i < this->n; i++) {
         for (int j = 0; j < this->n; j++) {
@@ -150,14 +159,14 @@ IloNumArray Leitor_de_Dados::calcula_D(IloEnv env) {
         }
     }
 
-    IloNumArray v(env,s1.size());
+    vector<int> v;
 
-    set <float, less <float> > ::iterator itr;
-    int i = 0;
+    set <int, less <int> > ::iterator itr;
+  
     for (itr = s1.begin(); itr != s1.end(); ++itr)
     {
-        v[i] =*itr;
-        i++;
+        v.push_back(*itr);
+       
     }
 
 
@@ -166,7 +175,7 @@ IloNumArray Leitor_de_Dados::calcula_D(IloEnv env) {
 
 
 
-NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env,IloNumArray Dt, int k) {
+NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env,IloIntArray Dt, int k) {
     NumMatrix3D A(env, this->n);
     for (int i = 0; i < this->n; i++) {
         A[i] = NumMatrix(env, this->n);
@@ -195,7 +204,7 @@ NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env,IloNumArray Dt, int k) {
 
 
 
-vector<vector<int>> Leitor_de_Dados::coleta_Si(IloEnv env, IloNumArray Dt, int k) {
+vector<vector<int>> Leitor_de_Dados::coleta_Si(IloEnv env, vector<int> Dt, int k) {
 
     vector<vector<int>> S;
 

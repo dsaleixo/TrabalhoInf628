@@ -16,7 +16,7 @@
 #include "MVPR.h"
 #include "MTCH.h"
 #include "BBM.h"
-
+#include "DuasFase.h"
 using namespace std;
 
 MMO* MetodoFabrica(int i, string s, int p) {
@@ -26,6 +26,8 @@ MMO* MetodoFabrica(int i, string s, int p) {
 	else if (i == 3) return new EpslonRestrito(s, p, "");//Método ε - Restrito
 	else if (i == 4) return new EpslonRestritoAproximado(s, p, "", 10); //Método ε - Restrito Aproximado
 	else if (i == 5) return new BBM(s, p, "");  //Método da Caixa Balanceada 
+	else if (i == 6) return new DuasFase(s,p,"",0.1,10,false); // Duas false sem escala
+	else if (i == 7) return new DuasFase(s, p, "", 0.1, 10, true); // Duas fases com escala
 	return NULL;
 
 }
@@ -35,11 +37,11 @@ MMO* MetodoFabrica(int i, string s, int p) {
 
 int main() {
 	int numero_p[5] = { 5,10,15,20,30 };
-	for (int m = 1; m < 6; m++) {// varia os modelos
-		ofstream out("resultado/out" + to_string(m) + ".txt");
-		for (int i = 1; i < 27; i++) {// varia os mapas
+	for (int m = 2; m < 3; m++) {// varia os modelos
+		ofstream out("resultado/outvmem" + to_string(m) + ".txt");
+		for (int i = 7; i < 10; i++) {// varia os mapas
 			MMO* mmo = MetodoFabrica(m, "dados/pmed"+to_string(i), 5);
-			for (int p = 0; p < 5; p++) { // varias os p
+			for (int p = 4; p < 5; p++) { // varias os p
 				mmo->setP(numero_p[p]);
 
 
@@ -55,6 +57,8 @@ int main() {
 				out << "Tempo(s): " << Tfinal << endl << endl;
 				mmo->reset();
 			}
+			mmo->deleta_ambiente();
+			delete mmo;
 		}
 	}
 }

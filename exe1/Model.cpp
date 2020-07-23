@@ -52,3 +52,7 @@ double Model::imprime_solucao() {
 	}
 	return resp;
 }
+
+void Model::delete_amb() {
+	this->env.end();
+}
