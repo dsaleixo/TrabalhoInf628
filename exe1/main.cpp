@@ -37,11 +37,11 @@ MMO* MetodoFabrica(int i, string s, int p) {
 
 int main() {
 	int numero_p[5] = { 5,10,15,20,30 };
-	for (int m = 2; m < 3; m++) {// varia os modelos
-		ofstream out("resultado/outvmem" + to_string(m) + ".txt");
-		for (int i = 7; i < 10; i++) {// varia os mapas
+	for (int m = 6; m < 7; m++) {// varia os modelos
+		ofstream out("resultado/out25_" + to_string(m) + ".txt");
+		for (int i = 1; i < 7; i++) {// varia os mapas
 			MMO* mmo = MetodoFabrica(m, "dados/pmed"+to_string(i), 5);
-			for (int p = 4; p < 5; p++) { // varias os p
+			for (int p = 0; p < 2; p++) { // varias os p
 				mmo->setP(numero_p[p]);
 
 
@@ -57,7 +57,7 @@ int main() {
 				out << "Tempo(s): " << Tfinal << endl << endl;
 				mmo->reset();
 			}
-			mmo->deleta_ambiente();
+			
 			delete mmo;
 		}
 	}

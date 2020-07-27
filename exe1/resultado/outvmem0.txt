@@ -1,0 +1,108 @@
+i=1		n=100		p=5
+3 pontos dominantes
+13 299
+213 155
+3013 127
+Tempo(s): 75.854
+
+i=1		n=100		p=10
+3 pontos dominantes
+13 299
+213 155
+4592 91
+Tempo(s): 64.179
+
+i=2		n=100		p=5
+7 pontos dominantes
+14 316
+15 248
+30 215
+51 200
+158 169
+300 145
+1438 128
+Tempo(s): 66.746
+
+i=2		n=100		p=10
+7 pontos dominantes
+14 316
+15 248
+30 215
+51 200
+158 169
+300 145
+5111 98
+Tempo(s): 64.391
+
+i=3		n=100		p=5
+5 pontos dominantes
+10 388
+29 244
+71 225
+326 195
+3283 127
+Tempo(s): 58.638
+
+i=3		n=100		p=10
+5 pontos dominantes
+10 388
+29 244
+71 225
+326 195
+5655 84
+Tempo(s): 59.842
+
+i=4		n=100		p=5
+5 pontos dominantes
+39 335
+43 258
+125 204
+164 197
+3082 135
+Tempo(s): 61.957
+
+i=4		n=100		p=10
+5 pontos dominantes
+39 335
+43 258
+125 204
+164 197
+5664 102
+Tempo(s): 63.76
+
+i=5		n=100		p=5
+6 pontos dominantes
+28 312
+33 215
+61 173
+73 162
+107 157
+2887 116
+Tempo(s): 51.019
+
+i=5		n=100		p=10
+6 pontos dominantes
+28 312
+33 215
+61 173
+73 162
+107 157
+6469 90
+Tempo(s): 49.736
+
+i=6		n=200		p=5
+4 pontos dominantes
+17 198
+45 120
+149 104
+2732 84
+Tempo(s): 420.468
+
+i=6		n=200		p=10
+4 pontos dominantes
+17 198
+45 120
+149 104
+6128 70
+Tempo(s): 411.823
+

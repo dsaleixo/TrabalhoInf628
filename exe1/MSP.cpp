@@ -18,7 +18,7 @@ void MSP::rodar() {
 	model.resolve();
 	if (!model.tem_solucao())return;
 	A1 = model.getValorCusto();
-
+	
 	model.reset();
 
 
@@ -28,8 +28,9 @@ void MSP::rodar() {
 	model.finalizarestricoes();
 	model.resolve();
 	if (!model.tem_solucao())return;
-	B2 = model.getValorRaio();
 	
+	B2 = model.getValorRaio();
+
 	model.reset();
 
 
@@ -44,6 +45,7 @@ void MSP::rodar() {
 	if (!model.tem_solucao())return;
 	this->salva_resultado();
 	A2= model.getValorRaio();
+	
 	model.reset();
 
 
@@ -51,12 +53,14 @@ void MSP::rodar() {
 
 	model.setFuncaoObj(model.getFuncaoObjCusto());
 	model.geraRestricoesbase();
+
 	model.addRestricao(model.getFuncaoObjRaio() <= B2);
 	model.finalizarestricoes();
 	model.resolve();
 	if (!model.tem_solucao())return;
 	this->salva_resultado();
 	B1 = model.getValorCusto();
+	
 
 	model.reset();
 	
@@ -66,8 +70,8 @@ void MSP::rodar() {
 }
 void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double Beta2) {
 	if (abs(A1 - B1) < 0.2 && abs(B2 == A2) < 0.2)return;
-	cout << endl << A1 << " " << A2 << endl;
-	cout<< B1 << " " << B2 << endl;
+	//cout << endl << A1 << " " << A2 << endl;
+	//cout<< B1 << " " << B2 << endl;
 
 	double gama = (A2 - B2) / (B1 - A1);
 
@@ -100,7 +104,7 @@ void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double B
 	this->salva_resultado();
 	C1 = model.getValorCusto();
 	C2 = model.getValorRaio(inicio,fim);
-	cout << C1 << " " << C2 << endl;
+	//cout << C1 << " " << C2 << endl;
 	model.reset();
 	rodar(C1, C2, B1, B2, Beta1, Beta2);
 	rodar(A1, A2, C1, C2, Beta1, Beta2);

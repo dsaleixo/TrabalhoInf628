@@ -13,7 +13,7 @@ class ModeloCP1 :
     public:
         ModeloCP1(string s, int p);
         vector<int> D;
-        IloInt Z_size;
+        int Z_size;
         vector<vector<int>> S;
         IloNumVarArray Z;
         IloNumVarArray y;

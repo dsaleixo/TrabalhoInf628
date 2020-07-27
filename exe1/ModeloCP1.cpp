@@ -35,7 +35,8 @@ IloExpr ModeloCP1::getFuncaoObjRaio(int inicio, int fim) {
     obj += D[inicio];
     for (int i = 1+inicio; i < fim; i++) {
         int k = i - inicio;
-        obj += (this->D[i] - this->D[i - 1]) * this->Z[k];
+        int j = i - 1;
+        obj += (this->D[i] - this->D[j]) * this->Z[k];
     }
     return obj;
 }
@@ -134,14 +135,15 @@ void ModeloCP1::reset() {
 
 int ModeloCP1::getValorRaio(int inicio,int fim) {
     int result;
+    
     result = D[inicio];
-    for (int i = 1 + inicio; i < fim - inicio; i++) {
+    int i = 1 + inicio;
+    for (; i < fim; i++) {
         int k = i - inicio;
-
-        result += (this->D[i] - this->D[i - 1]) * this->cplex1.getValue(this->Z[k]);
-        if (this->cplex1.getValue(this->Z[k]) == 0)break;
+       
+        if (this->cplex1.getValue(this->Z[k]) < 0.5 )break;
     }
-    return result;
+    return this->D[i-1];
 
 }
 int ModeloCP1::getValorCusto() {
