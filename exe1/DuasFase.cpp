@@ -83,7 +83,7 @@ void DuasFase::rodar() {
 	Heap.push_back(intervalo);
 	push_heap(Heap.begin(), Heap.end());
 	rodarHeap();
-	rodarEpslon();
+	//rodarEpslon();
 
 }
 
@@ -101,7 +101,7 @@ void DuasFase::rodarHeap() {
 			beta += passado[i];
 		}
 
-		if (beta >= teta * nn) {
+		if (beta >= teta * nn && false) {
 			return;
 		}
 
@@ -127,7 +127,7 @@ void DuasFase::rodarHeap() {
 		model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 		model.addRestricao(model.getFuncaoObjRaio() >= B2);
-		model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2);
+		model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2.0);
 
 		model.finalizarestricoes();
 		model.resolve();
@@ -147,7 +147,7 @@ void DuasFase::rodarHeap() {
 			model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 			model.addRestricao(model.getFuncaoObjRaio() >= B2);
-			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2);
+			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2.0);
 
 			model.finalizarestricoes();
 			model.resolve();
@@ -271,7 +271,7 @@ void DuasFase::rodarEpslon() {
 			double C1;
 			model.setFuncaoObj(model.getFuncaoObjCusto());
 			model.geraRestricoesbase();
-			model.addRestricao(model.getFuncaoObjRaio() <= A2 - 1);
+			model.addRestricao(model.getFuncaoObjRaio() <= A2 - 0.5);
 			model.finalizarestricoes();
 			model.resolve();
 			if (!model.tem_solucao())return;

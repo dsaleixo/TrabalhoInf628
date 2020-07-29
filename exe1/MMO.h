@@ -31,6 +31,7 @@ class MMO
 		MMO(string s, int p,string saida);
 		void imprime(ofstream &out);
 		virtual void rodar()=0;
+		void salva_resultado(int inicio, int fim);
 		void salva_resultado();
 		void setP(int p);
 		void reset();

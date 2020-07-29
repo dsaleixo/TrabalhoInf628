@@ -19,6 +19,7 @@ class ModeloCP1 :
         IloNumVarArray y;
 
         IloExpr getFuncaoObjRaio(int inicio, int fim);
+        void CriaVariavel(int tam);
         IloExpr getFuncaoObjRaio() {
             return getFuncaoObjRaio(0, Z_size);
         }

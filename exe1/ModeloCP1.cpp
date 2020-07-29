@@ -13,15 +13,10 @@ ModeloCP1::ModeloCP1(string s,int p) : Model(s,p) {
 
     //Definição das VARIAVEIS de DECISAO=======================================
 
-   //Matriz de variaveis k[j]
-    Z = IloNumVarArray(this->env, Z_size, 0, 1, ILOINT);
-
-
-    //Vetor de facilidade y[j], se o centro será alocado em j
-    y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
+   
 
     
-
+    
    
    
 
@@ -33,10 +28,13 @@ ModeloCP1::ModeloCP1(string s,int p) : Model(s,p) {
 IloExpr ModeloCP1::getFuncaoObjRaio(int inicio, int fim) {
     IloExpr obj(this->env);
     obj += D[inicio];
+   
     for (int i = 1+inicio; i < fim; i++) {
         int k = i - inicio;
         int j = i - 1;
+     
         obj += (this->D[i] - this->D[j]) * this->Z[k];
+      
     }
     return obj;
 }
@@ -66,8 +64,35 @@ void ModeloCP1::geraRestricoesbase(int inicio, int fim) {
     sum = IloSum(y);
     this->constraints.add(sum >= 1);
     sum.end();
+   
+    for (int i = 0; i < this->dados.n; i++) {
 
-    for (IloInt i = 0; i < this->dados.n; i++) {
+        
+
+            IloExpr sum(this->env);
+            sum += Z[0];
+            for (IloInt j = 0; j < this->dados.n; j++) {
+                if (this->dados.Dist[i][j] < D[inicio]) {
+                    sum += y[j];
+                }
+            }
+            this->constraints.add(sum >= 1);
+            sum.end();
+
+
+            IloExpr sum2(this->env);
+            int aux = (fim - inicio) - 1;
+            sum2 += Z[aux];
+            for (IloInt j = 0; j < this->dados.n; j++) {
+                if (this->dados.Dist[i][j] < D[inicio+aux ]) {
+                    sum2 += y[j];
+                }
+            }
+            this->constraints.add(sum2 >= 1);
+            sum2.end();
+            
+
+
         for (int k = 0; k < S[i].size(); k++) {
             
 
@@ -122,15 +147,22 @@ void ModeloCP1::reset() {
     this->model = IloModel(this->env);
     this->constraints = IloRangeArray(this->env);
 
+  
+   
+
+}
+
+void ModeloCP1::CriaVariavel(int tam) {
+
     //Matriz de variaveis k[j]
-    Z = IloNumVarArray(this->env, Z_size, 0, 1, ILOINT);
+    Z = IloNumVarArray(this->env, tam, 0, 1, ILOINT);
 
 
     //Vetor de facilidade y[j], se o centro será alocado em j
     y = IloNumVarArray(this->env, this->dados.n, 0, 1, ILOINT);
-   
 
 }
+
 
 
 int ModeloCP1::getValorRaio(int inicio,int fim) {
