@@ -1,8 +1,8 @@
 #include "MSP.h"
 
 
-MSP::MSP(string s, int p, string saida) : MMO(s,p,saida){
-
+MSP::MSP(string s, int p, string saida,bool otimizado) : MMO(s,p,saida){
+	this->otimizado = otimizado;
 }
 
 
@@ -79,9 +79,15 @@ void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double B
 	double alpha2 = 1 - alpha1;
 
 
-	int inicio = this->model.buscaBinaria(B2);
+	int inicio = 0;
 
-	int fim = this->model.buscaBinaria(A2)+1;
+	int fim = this->model.Z_size;
+
+	if (this->otimizado) {
+		 inicio = this->model.buscaBinaria(B2);
+
+		 fim = this->model.buscaBinaria(A2) + 1;
+	}
 
 
 	double C1, C2;

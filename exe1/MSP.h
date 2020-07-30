@@ -8,7 +8,8 @@ class MSP :
     public MMO
 {
     public:
-        MSP(string s, int p, string saida);
+        bool otimizado;
+        MSP(string s, int p, string saida,bool otimizado);
         virtual void rodar();
         void rodar(double A1, double A2, double B1, double B2,double Beta1, double Beta2);
 };
