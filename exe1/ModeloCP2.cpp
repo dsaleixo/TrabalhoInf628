@@ -4,12 +4,12 @@
 
 ModeloCP2::ModeloCP2(string s, int p) : Model(s, p) {
 
-    this->D = this->dados.calcula_D(this->env);
-    this->Z_size = D.getSize();
+    this->D = this->dados.calcula_D();
+    this->Z_size = D.size();
 
-    
 
-    this->S = this->dados.coleta_Si(this->env,this->D, this->Z_size);
+
+    this->S = this->dados.coleta_Si(this->env, this->D, this->Z_size);
 
     //Definição das VARIAVEIS de DECISAO=======================================
 

@@ -3,8 +3,8 @@
 
 ModeloCalikTansel::ModeloCalikTansel(string s,int p) : Model(s,p){
 
-	this->D = this->dados.calcula_D(this->env);
-	this->Z_size = this->D.getSize();
+	this->D = this->dados.calcula_D();
+	this->Z_size = D.size();
 
 	A = this->dados.cria_matrizA(this->env,this->D,this->Z_size);
 

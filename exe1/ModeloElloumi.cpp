@@ -5,8 +5,8 @@
 
 ModeloElloumi::ModeloElloumi(string s,int p) : Model(s,p) {
 
-	this->D = this->dados.calcula_D(this->env);
-	this->Z_size =D.getSize();
+    this->D = this->dados.calcula_D();
+    this->Z_size = D.size();
 
 
     //Definição das VARIAVEIS de DECISAO=======================================

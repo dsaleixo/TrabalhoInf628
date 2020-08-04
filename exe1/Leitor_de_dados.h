@@ -33,7 +33,7 @@ class Leitor_de_Dados{
 		void floyd();
 		void calcula_distancia_entre_locais();
 		vector<int> calcula_D();// nome confuso, este metodo não calculas as distancias
-		NumMatrix3D cria_matrizA(IloEnv env, IloIntArray Dt, int k);
+		NumMatrix3D cria_matrizA(IloEnv env, vector<int> Dt, int k);
 		vector<vector<int>> coleta_Si(IloEnv env, vector<int> Dt, int k);
 		int distancia_entre_pontos(Ponto p1, Ponto p2);
 		~Leitor_de_Dados();

@@ -11,8 +11,9 @@ class ModeloCP2 :
 {
 public:
     ModeloCP2(string s, int p);
-    IloNumArray D;
-    IloInt Z_size;
+    vector<int> D;
+    int Z_size;
+
     vector<vector<int>> S;
     IloFloatVar r;
     IloNumVarArray y;

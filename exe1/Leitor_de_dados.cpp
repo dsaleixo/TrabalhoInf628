@@ -42,6 +42,7 @@ void Leitor_de_Dados::Ler(IloEnv env, string s,int p){
     int a, b, c;
     for (int i = 0; i < m; i++) { // Le as distancia do arquivo 
         in >> a >> b >> c;
+
         this->Dist[a - 1][b - 1] = c;
         this->Dist[b - 1][a - 1] = c;
     }
@@ -175,7 +176,7 @@ vector<int> Leitor_de_Dados::calcula_D() {
 
 
 
-NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env,IloIntArray Dt, int k) {
+NumMatrix3D Leitor_de_Dados::cria_matrizA(IloEnv env, vector<int> Dt, int k) {
     NumMatrix3D A(env, this->n);
     for (int i = 0; i < this->n; i++) {
         A[i] = NumMatrix(env, this->n);

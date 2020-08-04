@@ -53,9 +53,11 @@ ModeloClassico::ModeloClassico(string s,int p) : Model(s,p) {
     }
 
 
-    for (IloInt i = 0; i < this->dados.n; i++) { // lance do raio
+    for (int i = 0; i < this->dados.n; i++) { // lance do raio
         IloExpr sum(env);
-        sum = IloScalProd(this->dados.Dist[i], x[i]);
+        for (int j = 0; j < this->dados.n; j++) {
+            sum += this->dados.Dist[i][j] * x[i][j];
+        }
         this->constraints.add(sum - r <= 0);
         sum.end();
     }
