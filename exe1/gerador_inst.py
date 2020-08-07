@@ -50,7 +50,11 @@ f(50,50,1,200,10,1000,nome+".txt",nome+"Custo.txt")
 for i in range(1,21):
   f(50,50,1,200,10,1000,nome+str(i)+".txt",nome+str(i)+"Custo.txt")
 for i in range(21,41):
+<<<<<<< HEAD
+  f(100,100,1,200,10,1000,nome+str(i)+".txt",nome+str(i)+"Custo.txt")
+=======
   f(100,100,1,100,10,1000,nome+str(i)+".txt",nome+str(i)+"Custo.txt")
+>>>>>>> b97ea40e96d8a96ad223c70a8bd5a642d6c12380
 
 
 

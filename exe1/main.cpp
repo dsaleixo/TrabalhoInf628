@@ -35,11 +35,16 @@ MMO* MetodoFabrica(int i, string s, int p) {
 
 
 Model* FabricaModelo(int i, string s, int p) {
-	if (i == 0)return new ModeloClassico(s, p);
+	if(i == 0)return new ModeloCP1(s, p, true, 1);
+	if (i == 1)return new ModeloCP1(s, p, true, 2);
+	if (i == 2)return new ModeloCP1(s, p, true, 3);
+	/*if (i == 0)return new ModeloClassico(s, p);
 	//else if (i == 2)return new ModeloElloumi(s, p);
 	else if (i == 1)return new ModeloCalikTansel(s, p);
 	else if (i == 2) return new ModeloCP1Original(s, p);
-	else if (i == 3) return new ModeloCP2(s, p);
+	else if (i == 4) return new ModeloCP2(s, p);
+	else if (i == 3) return new ModeloCP1(s, p,true,true);
+	*/
 	return NULL;
 
 }
@@ -59,18 +64,20 @@ void testeMO()
 	out << "n" << "  p" << " medianas  Classico    CalikTansel  CP1  CP2" << endl;
 	outt << "n" << "  p" << " medianas  Classico    CalikTansel  CP1  CP2" << endl;
 
-	for (int i = 1; i < 41; i++) {// varia os mapas
-		for (int p = 0; p < 1; p++) { // varias os p
+	for (int i = 1; i < 21; i++) {// varia os mapas
+		for (int p = 0; p < 5; p++) { // varias os p
 			outt << i << "  " << numero_p[p];
-			for (int m = 0; m < 4; m++) {// varia os modelos
+			for (int m = 0; m < 3; m++) {// varia os modelos
 				cout << i << " " << p << " " << m << endl;
-
-				model = FabricaModelo(m, "dados/Pcentros" + to_string(i), numero_p[p]);
-				//Model* model = MetodoFabrica(m, "pmed"+to_string(i)+".txt", numero_p[p]);
 
 				long double Tfinal;
 				long double TInicial;
 				TInicial = (clock() / (double)CLOCKS_PER_SEC);
+
+				model = FabricaModelo(m, "dados/pmed" + to_string(i), numero_p[p]);
+				//Model* model = MetodoFabrica(m, "pmed"+to_string(i)+".txt", numero_p[p]);
+
+				
 				model->resolve();
 				Tfinal = (clock() / (double)CLOCKS_PER_SEC) - TInicial;
 				double resultado = model->imprime_solucao();
@@ -98,9 +105,9 @@ void testeBO() {
 	int numero_p[5] = { 5,10,15,20,30 };
 	for (int m = 2; m < 3; m++) {// varia os modelos
 		ofstream out("resultado/out04_" + to_string(m) + ".txt");
-		for (int i = 1; i < 27; i++) {// varia os mapas
-			MMO* mmo = MetodoFabrica(m, "dados/Pcentros"+to_string(i), 5);
-			for (int p = 0; p < 5; p++) { // varias os p
+		for (int i = 1; i < 3; i++) {// varia os mapas
+			MMO* mmo = MetodoFabrica(m, "dados/pmed"+to_string(i), 5);
+			for (int p = 0; p < 3; p++) { // varias os p
 				mmo->setP(numero_p[p]);
 
 
@@ -125,8 +132,8 @@ void testeBO() {
 
 
 int main() {
-	testeBO();
-	//testeBO();
+	//testeMO();
+	testeMO();
 	return 0;
 }
 

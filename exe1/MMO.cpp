@@ -1,7 +1,7 @@
 #include "MMO.h"
 
 
-MMO::MMO(string s, int p,string saida): model(s,p) {
+MMO::MMO(string s, int p,string saida): model(s,p,false,false) {
 	
 	
 }
@@ -57,20 +57,12 @@ void MMO::imprime(ofstream &out) {
 }
 
 
+
+
 void MMO::salva_resultado() {
 	Solucao s;
-
-	s.f2 = model.getValorRaio(0, this->model.Z_size);
-
-	s.f1 = model.getValorCusto();
-
-	paleto.insert(s);
-}
-
-void MMO::salva_resultado(int inicio,int  fim) {
-	Solucao s;
 	
-	s.f2 = model.getValorRaio(inicio, fim);
+	s.f2 = model.getValorRaio();
 
 	s.f1 = model.getValorCusto();
 	

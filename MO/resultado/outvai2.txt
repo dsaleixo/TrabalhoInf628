@@ -1,0 +1,17 @@
+1		        
+Tempo(s): 212.736	
+Tempo(s): 255.068 
+melhoria de 17%
+ 
+2
+Tempo(s): 499.553	
+Tempo(s): 668.604
+melhoria de 25%
+
+3
+Tempo(s): 520.215	
+Tempo(s): 664.276
+melhoria de 22%
+
+4 30
+3 5

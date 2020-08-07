@@ -1,0 +1,5 @@
+i=3		n=100		p=10
+1 pontos dominantes
+10 285
+Tempo(s): 24.516
+

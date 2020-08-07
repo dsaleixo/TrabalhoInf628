@@ -7,12 +7,14 @@ MSP::MSP(string s, int p, string saida,bool otimizado) : MMO(s,p,saida){
 
 
 void MSP::rodar() {
+	this->model.setInicio(0);
 
-	//rodar(1232, 127, 13, 210, 1.0 / (1232 - 13), (1.0 / 210 - 127));
+	this->model.setFim(this->model.Z_size);
+
 
 
 	double A1, A2, B1, B2;
-	model.CriaVariavel(this->model.Z_size);
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjCusto());
 	model.geraRestricoesbase();
 	model.finalizarestricoes();
@@ -22,7 +24,7 @@ void MSP::rodar() {
 	
 	model.reset();
 
-	model.CriaVariavel(this->model.Z_size);
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjRaio());
 	model.geraRestricoesbase();
 
@@ -35,7 +37,7 @@ void MSP::rodar() {
 	model.reset();
 
 
-	model.CriaVariavel(this->model.Z_size);
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjRaio());
 	model.geraRestricoesbase();
 	
@@ -51,7 +53,7 @@ void MSP::rodar() {
 
 
 
-	model.CriaVariavel(this->model.Z_size);
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjCusto());
 	model.geraRestricoesbase();
 
@@ -79,29 +81,28 @@ void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double B
 	double alpha2 = 1 - alpha1;
 
 
-	int inicio = 0;
-
-	int fim = this->model.Z_size;
 
 	if (this->otimizado) {
-		 inicio = this->model.buscaBinaria(B2);
+			this->model.setInicio( this->model.buscaBinaria(B2));
 
-		 fim = this->model.buscaBinaria(A2) + 1;
+			this->model.setFim(this->model.buscaBinaria(A2) + 1);
 	}
-
+	else {
+		
+	}
 
 	double C1, C2;
 	
-	model.CriaVariavel(fim -  inicio);
+	model.CriaVariavel();
 	
 	model.setFuncaoObj(Beta1*alpha1*model.getFuncaoObjCusto()+
-					Beta2 * alpha2 * model.getFuncaoObjRaio(inicio,fim));
+					Beta2 * alpha2 * model.getFuncaoObjRaio());
 
-	model.geraRestricoesbase(inicio,fim);
+	model.geraRestricoesbase();
 
 	model.addRestricao(model.getFuncaoObjCusto() <= B1 - 1);
 
-	model.addRestricao(model.getFuncaoObjRaio(inicio, fim) <= A2 -1  );
+	model.addRestricao(model.getFuncaoObjRaio() <= A2 -1  );
 	
 	
 	
@@ -113,9 +114,9 @@ void MSP::rodar(double A1, double A2, double B1, double B2,double Beta1,double B
 		model.reset();
 		return;
 	}
-	this->salva_resultado(inicio, fim);
+	this->salva_resultado();
 	C1 = model.getValorCusto();
-	C2 = model.getValorRaio(inicio,fim);
+	C2 = model.getValorRaio();
 
 	model.reset();
 	
