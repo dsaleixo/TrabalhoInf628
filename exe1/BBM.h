@@ -13,9 +13,9 @@ class BBM :
     public MMO
 {
 public:
-    
+    bool otimizado=true;
     vector<Intervalo1> Heap;
-    BBM(string s, int p, string saida);
+    BBM(string s, int p, string saida,bool otimizado);
     virtual void rodar();
     void rodarHeap();
 

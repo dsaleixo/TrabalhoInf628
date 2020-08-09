@@ -11,7 +11,8 @@ class MVPR :
 {
     public:
         int lambda;
-        MVPR(string s, int p, string saida, int lambda);
+        bool otimizado;
+        MVPR(string s, int p, string saida, int lambda,bool otimizado);
         virtual void rodar();
         void rodar(double A1, double A2, double B1, double B2);
 

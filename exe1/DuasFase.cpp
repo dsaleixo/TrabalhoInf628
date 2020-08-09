@@ -3,9 +3,10 @@
 
 
 
-DuasFase::DuasFase(string s, int p, string saida, double nn, int teta, bool usar_escala) : MMO(s, p, saida) {
+DuasFase::DuasFase(string s, int p, string saida, double nn, int teta, bool usar_escala,bool otimizador) : MMO(s, p, saida) {
 	this->nn = nn;
 	this->teta = teta;
+	this->otimizado = otimizador;
 	for (int i = 0; i < teta; i++) {
 		passado.push_back(0);
 	}
@@ -19,42 +20,67 @@ DuasFase::DuasFase(string s, int p, string saida, double nn, int teta, bool usar
 
 void DuasFase::rodar() {
 
+	this->model.setInicio(0);
+
+	this->model.setFim(this->model.Z_size);
+
+
+
 	double A1, A2, B1, B2;
+	int i, f;
+
+
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjCusto());
 	model.geraRestricoesbase();
 	model.finalizarestricoes();
 	model.resolve();
 	if (!model.tem_solucao())return;
 	A1 = model.getValorCusto();
-
+	f = this->model.buscaBinaria(this->model.getValorRaio() + 1);
 	model.reset();
 
+	if (this->otimizado) {
+		i = this->model.buscaBinaria(this->model.Menores[this->model.dados.p]);
+		this->model.setInicio(i);
+		int aux = this->model.buscaBinaria(this->model.maiorD()) + 1;
+		if (f < aux)this->model.setFim(f);
+		else this->model.setFim(aux);
 
+	}
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjRaio());
 	model.geraRestricoesbase();
 	model.finalizarestricoes();
 	model.resolve();
 	if (!model.tem_solucao())return;
 	B2 = model.getValorRaio();
-
+	i = this->model.buscaBinaria(B2);
 	model.reset();
 
 
 
+	if (this->otimizado) {
+		this->model.setInicio(i);
+		this->model.setFim(f);
+	}
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjRaio());
 	model.geraRestricoesbase();
 	model.addRestricao(model.getFuncaoObjCusto() <= A1);
 	model.finalizarestricoes();
 	model.resolve();
-
 	if (!model.tem_solucao())return;
 	this->salva_resultado();
 	A2 = model.getValorRaio();
 	model.reset();
 
 
-
-
+	if (this->otimizado) {
+		this->model.setInicio(i);
+		this->model.setFim(f);
+	}
+	model.CriaVariavel();
 	model.setFuncaoObj(model.getFuncaoObjCusto());
 	model.geraRestricoesbase();
 	model.addRestricao(model.getFuncaoObjRaio() <= B2);
@@ -63,7 +89,6 @@ void DuasFase::rodar() {
 	if (!model.tem_solucao())return;
 	this->salva_resultado();
 	B1 = model.getValorCusto();
-
 	model.reset();
 
 
@@ -118,8 +143,20 @@ void DuasFase::rodarHeap() {
 
 
 
+		if (abs(A1 - B1) < 0.2 && abs(B2 - A2) < 0.2)continue;
+
+
+
 		double C1, C2;
 		C1 = C2 = -1;
+		if (this->otimizado) {
+			this->model.setInicio(this->model.buscaBinaria(B2));
+
+			this->model.setFim(this->model.buscaBinaria((A2 + B2) / 2) + 2);
+		}
+
+
+		model.CriaVariavel();
 		model.setFuncaoObj(model.getFuncaoObjCusto());
 		model.geraRestricoesbase();
 
@@ -127,7 +164,7 @@ void DuasFase::rodarHeap() {
 		model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 		model.addRestricao(model.getFuncaoObjRaio() >= B2);
-		model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2.0);
+		model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2);
 
 		model.finalizarestricoes();
 		model.resolve();
@@ -140,6 +177,14 @@ void DuasFase::rodarHeap() {
 
 			C1 = model.getValorCusto();
 			model.reset();
+
+
+			if (this->otimizado) {
+				this->model.setInicio(this->model.buscaBinaria(B2));
+
+				this->model.setFim(this->model.buscaBinaria((A2 + B2) / 2) + 2);
+			}
+			model.CriaVariavel();
 			model.setFuncaoObj(model.getFuncaoObjRaio());
 			model.geraRestricoesbase();
 
@@ -147,7 +192,7 @@ void DuasFase::rodarHeap() {
 			model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 			model.addRestricao(model.getFuncaoObjRaio() >= B2);
-			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2.0);
+			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2);
 
 			model.finalizarestricoes();
 			model.resolve();
@@ -169,10 +214,16 @@ void DuasFase::rodarHeap() {
 
 		double D1, D2;
 		D1 = D2 = -1;
+		if (this->otimizado) {
+			this->model.setInicio(this->model.buscaBinaria((A2 + B2) / 2));
+
+			this->model.setFim(this->model.buscaBinaria(A2) + 1);
+		}
+		model.CriaVariavel();
 		model.setFuncaoObj(model.getFuncaoObjRaio());
 		model.geraRestricoesbase();
 
-		model.addRestricao(model.getFuncaoObjCusto() <= C1);
+		model.addRestricao(model.getFuncaoObjCusto() <= C1 - 0.5);
 		model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 		model.addRestricao(model.getFuncaoObjRaio() <= A2);
@@ -189,6 +240,12 @@ void DuasFase::rodarHeap() {
 
 			D2 = model.getValorRaio();
 			model.reset();
+			if (this->otimizado) {
+				this->model.setInicio(this->model.buscaBinaria((A2 + B2) / 2));
+
+				this->model.setFim(this->model.buscaBinaria(D2) + 2);
+			}
+			model.CriaVariavel();
 			model.setFuncaoObj(model.getFuncaoObjCusto());
 			model.geraRestricoesbase();
 
@@ -211,6 +268,8 @@ void DuasFase::rodarHeap() {
 
 
 		}
+
+		
 		bool achou = false;
 		if (C1 != -1 && C2 != -1 && !(abs(C1 - B1) < 0.1 && (C2 - B2) < 0.1)) {
 			Intervalo1 intervalo2;
@@ -268,7 +327,14 @@ void DuasFase::rodarEpslon() {
 
 		while (!(abs(A1 - B1) < 0.5 && abs(B2 - A2) < 0.5)) {
 
-			double C1;
+			if (this->otimizado) {
+				this->model.setInicio(this->model.buscaBinaria(B2));
+
+				this->model.setFim(this->model.buscaBinaria(A2) + 1);
+			}
+
+			int C1;
+			model.CriaVariavel();
 			model.setFuncaoObj(model.getFuncaoObjCusto());
 			model.geraRestricoesbase();
 			model.addRestricao(model.getFuncaoObjRaio() <= A2 - 0.5);
@@ -280,7 +346,8 @@ void DuasFase::rodarEpslon() {
 			model.reset();
 
 
-			double C2;
+			int C2;
+			model.CriaVariavel();
 			model.setFuncaoObj(model.getFuncaoObjRaio());
 			model.geraRestricoesbase();
 			model.addRestricao(model.getFuncaoObjCusto() <= C1);
@@ -290,7 +357,7 @@ void DuasFase::rodarEpslon() {
 			this->salva_resultado();
 			C2 = model.getValorRaio();
 			model.reset();
-
+			//cout<<"C " << C1 << " " << C2 << endl;
 			A1 = C1;
 			A2 = C2;
 		}

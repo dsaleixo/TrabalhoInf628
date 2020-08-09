@@ -1,7 +1,7 @@
 #include "MMO.h"
 
 
-MMO::MMO(string s, int p,string saida): model(s,p,false,false) {
+MMO::MMO(string s, int p,string saida): model(s,p,false,0) {
 	
 	
 }

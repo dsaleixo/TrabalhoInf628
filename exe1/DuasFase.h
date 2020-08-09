@@ -18,7 +18,8 @@ public:
     vector<int> passado;
     int indice;
     vector<Intervalo1> Heap;
-    DuasFase(string s, int p, string saida,double nn,int teta, bool usar_escala);
+    bool otimizado;
+    DuasFase(string s, int p, string saida,double nn,int teta, bool usar_escala,bool otimizador);
     virtual void rodar();
     void rodarHeap();
     void rodarEpslon();

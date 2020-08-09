@@ -25,7 +25,7 @@ ModeloCP1::ModeloCP1(string s,int p,bool montar,int heuristica) : Model(s,p) {
      }
      else if(heuristica==1){
          this->inicio = this->buscaBinaria(this->Menores[p]);
-         this->fim = this->buscaBinaria(this->maiorD());
+         this->fim = this->buscaBinaria(this->maiorD()+1);
          
          
      }

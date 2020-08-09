@@ -8,7 +8,8 @@ class EpslonRestrito :
     public MMO
 {
     public:
-        EpslonRestrito(string s, int p, string saida);
+        bool otimizado;
+        EpslonRestrito(string s, int p, string saida,bool otimizado);
         virtual void rodar();
         void rodar(double A1, double A2, double B1, double B2);
 

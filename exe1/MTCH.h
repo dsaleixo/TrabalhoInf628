@@ -11,7 +11,8 @@ class MTCH :
 
 public:
     int lambda;
-    MTCH(string s, int p, string saida, int lambda);
+    bool otimizado;
+    MTCH(string s, int p, string saida, int lambda,bool otmizado);
     virtual void rodar();
     void rodar(double A1, double A2, double B1, double B2);
 };

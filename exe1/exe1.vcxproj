@@ -153,13 +153,7 @@
     <ClCompile Include="Leitor_de_dados.cpp" />
     <ClCompile Include="MMO.cpp" />
     <ClCompile Include="Model.cpp" />
-    <ClCompile Include="ModeloCalikTansel.cpp" />
-    <ClCompile Include="ModeloClassico.cpp" />
     <ClCompile Include="ModeloCP1.cpp" />
-    <ClCompile Include="ModeloCP1Original.cpp" />
-    <ClCompile Include="ModeloCP2.cpp" />
-    <ClCompile Include="ModeloElloumi.cpp" />
-    <ClCompile Include="ModeloPmedianasCapacitado.cpp" />
     <ClCompile Include="MSP.cpp" />
     <ClCompile Include="MTCH.cpp" />
     <ClCompile Include="MVPR.cpp" />
@@ -174,12 +168,7 @@
     <ClInclude Include="Leitor_de_dados.h" />
     <ClInclude Include="MMO.h" />
     <ClInclude Include="Model.h" />
-    <ClInclude Include="ModeloCalikTansel.h" />
-    <ClInclude Include="ModeloClassico.h" />
     <ClInclude Include="ModeloCP1.h" />
-    <ClInclude Include="ModeloCP1Original.h" />
-    <ClInclude Include="ModeloCP2.h" />
-    <ClInclude Include="ModeloElloumi.h" />
     <ClInclude Include="MSP.h" />
     <ClInclude Include="MTCH.h" />
     <ClInclude Include="MVPR.h" />
