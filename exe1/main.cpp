@@ -14,6 +14,7 @@
 #include "MTCH.h"
 #include "BBM.h"
 #include "DuasFase.h"
+#include "MetodoDavid.h"
 
 using namespace std;
 
@@ -30,6 +31,8 @@ MMO* MetodoFabrica(int i, string s, int p) {
 	else if (i == 9) return new BBM(s, p, "",false);  //Método da Caixa Balanceada 
 	else if (i == 10) return new DuasFase(s,p,"",0.1,10,false,true); // Duas false sem escala
 	else if (i == 11) return new DuasFase(s, p, "", 0.1, 10, false,false); // Duas false sem escala
+	else if (i == 12) return new MetodoDavid(s, p, "", 3, true);
+	else if (i == 13) return new MetodoDavid(s, p, "", 3, false); 
 	
 	return NULL;
 
@@ -46,8 +49,8 @@ MMO* MetodoFabrica(int i, string s, int p) {
 
 void testeBO() {
 	int numero_p[5] = { 5,10,15,20,30 };
-	for (int m = 10; m < 12; m++) {// varia os modelos
-		ofstream out("resultado/out08_" + to_string(m) + ".txt");
+	for (int m = 13; m < 14; m++) {// varia os modelos
+		ofstream out("resultado/out" + to_string(m) + ".txt");
 		for (int i = 1; i < 2; i++) {// varia os mapas
 			MMO* mmo = MetodoFabrica(m, "dados/pmed"+to_string(i), 5);
 			for (int p = 0; p < 1; p++) { // varias os p

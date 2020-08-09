@@ -3,8 +3,9 @@
 
 
 
-EpslonRestritoAproximado::EpslonRestritoAproximado(string s, int p, string saida,int n) : MMO(s, p, saida) {
+EpslonRestritoAproximado::EpslonRestritoAproximado(string s, int p, string saida,int n,bool otimizado) : MMO(s, p, saida) {
 	this->n = n;
+	this->otimizado = otimizado;
 }
 
 

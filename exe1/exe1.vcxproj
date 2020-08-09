@@ -151,6 +151,7 @@
     <ClCompile Include="EpslonRestritoAproximado.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Leitor_de_dados.cpp" />
+    <ClCompile Include="MetodoDavid.cpp" />
     <ClCompile Include="MMO.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModeloCP1.cpp" />
@@ -166,6 +167,7 @@
     <ClInclude Include="EpslonRestrito.h" />
     <ClInclude Include="EpslonRestritoAproximado.h" />
     <ClInclude Include="Leitor_de_dados.h" />
+    <ClInclude Include="MetodoDavid.h" />
     <ClInclude Include="MMO.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModeloCP1.h" />
