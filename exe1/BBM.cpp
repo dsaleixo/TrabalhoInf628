@@ -161,7 +161,7 @@ void BBM::rodarHeap() {
 			model.addRestricao(model.getFuncaoObjCusto() >= A1);
 
 			model.addRestricao(model.getFuncaoObjRaio() >= B2);
-			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2 );
+			model.addRestricao(model.getFuncaoObjRaio() <= (A2 + B2) / 2 - 0.05);
 
 			model.finalizarestricoes();
 			model.resolve();
